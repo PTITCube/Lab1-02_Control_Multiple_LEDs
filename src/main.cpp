@@ -14,7 +14,7 @@ void setup() {
     Serial.begin(115200);
     while (!Serial) { delay(10); }
 
-    Serial.println("\n[EXAMPLE] Bắt đầu bài test Điều khiển nhiều LED...");
+    Serial.println("[BOOT] Multi-LED Test");
     
     for (int i = 0; i < NUM_LEDS; i++) {
         pinMode(LED_PINS[i], OUTPUT);
