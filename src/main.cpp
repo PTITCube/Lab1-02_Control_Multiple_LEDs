@@ -1,9 +1,5 @@
 /**
- * VÍ DỤ 1-02: ĐIỀU KHIỂN NHIỀU ĐÈN LED (MULTIPLE LEDS)
- * 
- * Mô tả:
- * - Cấu hình nhiều chân GPIO làm OUTPUT để điều khiển đồng thời nhiều đèn LED.
- * - Tạo hiệu ứng nhấp nháy tuần tự (chạy đèn LED) và in trạng thái ra Serial Monitor.
+ * VÍ DỤ 1-02: ĐIỀU KHIỂN NHIỀU ĐÈN LED
  */
 #include <Arduino.h>
 
@@ -11,11 +7,6 @@ const int LED_PINS[] = {2, 4, 5};
 const int NUM_LEDS = sizeof(LED_PINS) / sizeof(LED_PINS[0]);
 
 void setup() {
-    Serial.begin(115200);
-    while (!Serial) { delay(10); }
-
-    Serial.println("[BOOT] Multi-LED Test");
-    
     for (int i = 0; i < NUM_LEDS; i++) {
         pinMode(LED_PINS[i], OUTPUT);
         digitalWrite(LED_PINS[i], LOW);
@@ -23,10 +14,8 @@ void setup() {
 }
 
 void loop() {
-    // Bật tắt tuần tự từng LED
     for (int i = 0; i < NUM_LEDS; i++) {
         digitalWrite(LED_PINS[i], HIGH);
-        Serial.printf("[LED] Bật LED chân GPIO %d\n", LED_PINS[i]);
         delay(300);
         digitalWrite(LED_PINS[i], LOW);
     }
